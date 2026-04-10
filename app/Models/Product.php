@@ -31,4 +31,20 @@ class Product extends Model
     {
         return $this->hasMany(Kategori::class);
     }
+
+    /**
+     * Accessor: $product->quantity returns the qty column.
+     */
+    public function getQuantityAttribute()
+    {
+        return $this->attributes['qty'] ?? null;
+    }
+
+    /**
+     * Mutator: $product->quantity = x sets the qty column.
+     */
+    public function setQuantityAttribute($value)
+    {
+        $this->attributes['qty'] = $value;
+    }
 }

@@ -22,7 +22,7 @@
                         </div>
                     </div>
 
-                    <form id="delete-product-form" action="{{ route('product.destroy', $product->id) }}" method="POST"
+                    <form id="delete-product-form" action="{{ route('product.delete', $product->id) }}" method="POST"
                         class="hidden">
                         @csrf
                         @method('DELETE')
