@@ -11,6 +11,7 @@ class Product extends Model
 
     protected $fillable = [
         'user_id',
+        'category_id',
         'name',
         'qty',
         'price',
@@ -25,11 +26,11 @@ class Product extends Model
     }
 
     /**
-     * Get the kategoris for the product.
+     * Get the kategori that owns the product.
      */
-    public function kategoris()
+    public function kategori()
     {
-        return $this->hasMany(Kategori::class);
+        return $this->belongsTo(Kategori::class, 'category_id');
     }
 
     /**

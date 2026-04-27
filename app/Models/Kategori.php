@@ -12,15 +12,14 @@ class Kategori extends Model
     protected $table = 'kategoris';
 
     protected $fillable = [
-        'product_id',
         'name',
     ];
 
     /**
-     * Get the product that owns the kategori.
+     * Get the products for the kategori.
      */
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(Product::class, 'category_id');
     }
 }

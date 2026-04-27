@@ -88,6 +88,20 @@
                             </div>
                         </div>
 
+                        {{-- Category --}}
+                        <div class="flex items-center px-6 py-4">
+                            <div class="w-32 shrink-0 text-sm text-gray-500 dark:text-gray-400">Category</div>
+                            <div>
+                                @if ($product->kategori)
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-300">
+                                        {{ $product->kategori->name }}
+                                    </span>
+                                @else
+                                    <span class="text-sm text-gray-400 dark:text-gray-500">No category</span>
+                                @endif
+                            </div>
+                        </div>
+
                         {{-- Owner --}}
                         <div class="flex items-center px-6 py-4">
                             <div class="w-32 shrink-0 text-sm text-gray-500 dark:text-gray-400">Owner</div>

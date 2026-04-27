@@ -33,6 +33,7 @@
                                     <th class="px-6 py-3 text-left font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Name</th>
                                     <th class="px-6 py-3 text-left font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Quantity</th>
                                     <th class="px-6 py-3 text-left font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Price</th>
+                                    <th class="px-6 py-3 text-left font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Category</th>
                                     <th class="px-6 py-3 text-left font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider">Owner</th>
                                     <th class="px-6 py-3 text-center font-semibold text-gray-500 dark:text-gray-300 uppercase tracking-wider w-32">Actions</th>
                                 </tr>
@@ -48,6 +49,15 @@
                                             </span>
                                         </td>
                                         <td class="px-6 py-4 text-gray-700 dark:text-gray-300 font-mono">Rp {{ number_format($product->price, 0, ',', '.') }}</td>
+                                        <td class="px-6 py-4">
+                                            @if ($product->kategori)
+                                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 dark:bg-indigo-900/40 dark:text-indigo-300">
+                                                    {{ $product->kategori->name }}
+                                                </span>
+                                            @else
+                                                <span class="text-gray-400 dark:text-gray-500">-</span>
+                                            @endif
+                                        </td>
                                         <td class="px-6 py-4 text-gray-500 dark:text-gray-400">{{ $product->user->name ?? '-' }}</td>
                                         <td class="px-6 py-4">
                                             <div class="flex items-center justify-center gap-2">
@@ -80,7 +90,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
+                                        <td colspan="7" class="px-6 py-12 text-center text-gray-500 dark:text-gray-400">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400 mb-3 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
                                             </svg>

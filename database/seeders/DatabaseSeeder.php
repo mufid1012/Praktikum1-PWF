@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Kategori;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -28,5 +29,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'role' => 'user',
         ]);
+
+        // Seed categories
+        $categories = ['Electronics', 'Fashion', 'Food & Beverage', 'Furniture', 'Sports'];
+        foreach ($categories as $category) {
+            Kategori::create(['name' => $category]);
+        }
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -13,7 +14,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::paginate(10);
+        $products = Product::with('kategori')->paginate(10);
 
         return view('product.index', compact('products'));
     }
@@ -40,8 +41,9 @@ class ProductController extends Controller
         Gate::authorize('create', Product::class);
 
         $users = User::orderBy('name')->get();
+        $categories = Kategori::orderBy('name')->get();
 
-        return view('product.create', compact('users'));
+        return view('product.create', compact('users', 'categories'));
     }
 
     public function show($id)
@@ -77,8 +79,9 @@ class ProductController extends Controller
         Gate::authorize('update', $product);
 
         $users = User::orderBy('name')->get();
+        $categories = Kategori::orderBy('name')->get();
 
-        return view('product.edit', compact('product', 'users'));
+        return view('product.edit', compact('product', 'users', 'categories'));
     }
 
     public function delete($id)
