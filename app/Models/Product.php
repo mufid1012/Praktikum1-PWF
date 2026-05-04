@@ -34,6 +34,14 @@ class Product extends Model
     }
 
     /**
+     * Alias for kategori relationship (used by API).
+     */
+    public function category()
+    {
+        return $this->belongsTo(Kategori::class, 'category_id');
+    }
+
+    /**
      * Accessor: $product->quantity returns the qty column.
      */
     public function getQuantityAttribute()
